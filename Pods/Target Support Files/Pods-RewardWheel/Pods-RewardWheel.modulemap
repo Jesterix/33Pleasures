@@ -1,0 +1,6 @@
+framework module Pods_RewardWheel {
+  umbrella header "Pods-RewardWheel-umbrella.h"
+
+  export *
+  module * { export * }
+}

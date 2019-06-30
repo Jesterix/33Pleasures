@@ -1,0 +1,20 @@
+PODS:
+  - IQKeyboardManagerSwift (6.4.0)
+  - TTFortuneWheel (0.1.5)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift (= 6.4.0)
+  - TTFortuneWheel
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IQKeyboardManagerSwift
+    - TTFortuneWheel
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
+  TTFortuneWheel: 6582738bf091971959221a94b9b1ef2a075edc5a
+
+PODFILE CHECKSUM: eaca2e7a41f13e8b85bb7f9db85683ed1d0e218d
+
+COCOAPODS: 1.5.2
