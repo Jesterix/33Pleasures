@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hS7-1T-WBo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,216 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RewardWheel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l6H-qV-x3o">
+                                <rect key="frame" x="0.0" y="164" width="375" height="503"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rewardListCell" id="lua-N3-cS9" customClass="RewardListTableViewCell" customModule="RewardWheel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lua-N3-cS9" id="aST-MA-KCf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z8-sa-gWy">
+                                                    <rect key="frame" x="15" y="11.5" width="345" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8z8-sa-gWy" firstAttribute="centerY" secondItem="aST-MA-KCf" secondAttribute="centerY" id="0vi-1F-DTW"/>
+                                                <constraint firstAttribute="trailing" secondItem="8z8-sa-gWy" secondAttribute="trailing" constant="15" id="m2a-4L-B68"/>
+                                                <constraint firstItem="8z8-sa-gWy" firstAttribute="leading" secondItem="aST-MA-KCf" secondAttribute="leading" constant="15" id="pOo-h4-Y0d"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="rewardListNameLabel" destination="8z8-sa-gWy" id="faB-OX-cem"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dQd-63-ZCA"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="c1C-fs-6E2"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your reward list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-wx-M9m">
+                                <rect key="frame" x="97.5" y="99" width="180.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l6H-qV-x3o" secondAttribute="trailing" id="1m0-zG-NBT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="HhQ-wx-M9m" secondAttribute="bottom" constant="-56" id="2ib-ED-KJW"/>
+                            <constraint firstItem="l6H-qV-x3o" firstAttribute="top" secondItem="HhQ-wx-M9m" secondAttribute="bottom" constant="44" id="Bpn-OS-VZf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="l6H-qV-x3o" secondAttribute="bottom" id="FNg-rL-b8I"/>
+                            <constraint firstItem="l6H-qV-x3o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KGK-dU-rv0"/>
+                            <constraint firstItem="l6H-qV-x3o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="NzX-y7-2cx"/>
+                            <constraint firstItem="HhQ-wx-M9m" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="f9L-nf-jzr"/>
+                            <constraint firstItem="l6H-qV-x3o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p5X-p6-z7c"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Kci-LY-5PR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kg5-ty-W3V">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addListTapped:" destination="BYZ-38-t0r" id="jX2-dV-qyM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rewardListTableView" destination="l6H-qV-x3o" id="kTA-F0-HIl"/>
+                        <segue destination="RN0-kO-T6d" kind="show" identifier="toWheelSegue" id="bDt-hZ-A1S"/>
+                        <segue destination="JQ8-N6-v4n" kind="show" identifier="addListSegue" id="bAH-DA-xX9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="992.79999999999995" y="33.733133433283363"/>
+        </scene>
+        <!--Wheel View Controller-->
+        <scene sceneID="UFV-8t-ixT">
+            <objects>
+                <viewController id="RN0-kO-T6d" customClass="WheelViewController" customModule="RewardWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zqJ-it-pnY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ff2-2A-qKr">
+                                <rect key="frame" x="170" y="78" width="35" height="30"/>
+                                <state key="normal" title="Spin!"/>
+                                <connections>
+                                    <action selector="spinTapped:" destination="RN0-kO-T6d" eventType="touchUpInside" id="uFA-XR-OHn"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0u-cV-4rd">
+                                <rect key="frame" x="0.0" y="328.5" width="10" height="10"/>
+                                <color key="backgroundColor" red="1" green="0.32156862749999998" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="uWM-HY-Tsg"/>
+                                    <constraint firstAttribute="width" constant="10" id="zgO-It-lwl"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pk-sj-gWN">
+                                <rect key="frame" x="166.5" y="626.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ff2-2A-qKr" firstAttribute="top" secondItem="wwP-CT-SF8" secondAttribute="top" constant="14" id="1AE-UF-hg2"/>
+                            <constraint firstItem="i0u-cV-4rd" firstAttribute="leading" secondItem="wwP-CT-SF8" secondAttribute="leading" id="91Z-ms-Zac"/>
+                            <constraint firstItem="0pk-sj-gWN" firstAttribute="centerX" secondItem="zqJ-it-pnY" secondAttribute="centerX" id="Jx9-n9-CBT"/>
+                            <constraint firstItem="Ff2-2A-qKr" firstAttribute="centerX" secondItem="zqJ-it-pnY" secondAttribute="centerX" id="Txh-TZ-tGm"/>
+                            <constraint firstItem="wwP-CT-SF8" firstAttribute="bottom" secondItem="0pk-sj-gWN" secondAttribute="bottom" constant="20" id="YEU-Z6-Qqv"/>
+                            <constraint firstItem="i0u-cV-4rd" firstAttribute="centerY" secondItem="zqJ-it-pnY" secondAttribute="centerY" id="c1r-VO-H2c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wwP-CT-SF8"/>
+                    </view>
+                    <connections>
+                        <outlet property="resultLabel" destination="0pk-sj-gWN" id="6Mz-6F-NcV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0s-wc-YWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424.8000000000002" y="25.637181409295355"/>
+        </scene>
+        <!--Create new reward list-->
+        <scene sceneID="WzG-ih-O1Z">
+            <objects>
+                <viewController title="Create new reward list" id="JQ8-N6-v4n" customClass="CreateNewListVC" customModule="RewardWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RVO-lO-WZr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Reward list" borderStyle="roundedRect" placeholder="Name yor list" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ei4-xR-2le">
+                                <rect key="frame" x="50" y="79" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JQ8-N6-v4n" id="XHU-7v-LNJ"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+ New reward" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YH7-1a-aUy">
+                                <rect key="frame" x="15" y="119" width="345" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="newRewardFieldCompleted:" destination="JQ8-N6-v4n" eventType="editingDidEnd" id="SY9-aN-IPL"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-j0-tcU">
+                                <rect key="frame" x="15" y="157" width="345" height="490"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JQ8-N6-v4n" id="NyC-UN-dKE"/>
+                                    <outlet property="delegate" destination="JQ8-N6-v4n" id="4Hq-Ot-gcL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YH7-1a-aUy" firstAttribute="leading" secondItem="LO8-hX-OT4" secondAttribute="leading" constant="15" id="0Y2-so-WGf"/>
+                            <constraint firstItem="pY4-j0-tcU" firstAttribute="leading" secondItem="LO8-hX-OT4" secondAttribute="leading" constant="15" id="EgZ-Sm-ZNJ"/>
+                            <constraint firstItem="YH7-1a-aUy" firstAttribute="top" secondItem="ei4-xR-2le" secondAttribute="bottom" constant="10" id="FFV-VC-at7"/>
+                            <constraint firstItem="LO8-hX-OT4" firstAttribute="trailing" secondItem="ei4-xR-2le" secondAttribute="trailing" constant="50" id="GUE-Vb-IOf"/>
+                            <constraint firstItem="ei4-xR-2le" firstAttribute="leading" secondItem="LO8-hX-OT4" secondAttribute="leading" constant="50" id="c47-te-TS5"/>
+                            <constraint firstItem="pY4-j0-tcU" firstAttribute="top" secondItem="YH7-1a-aUy" secondAttribute="bottom" constant="8" id="kfB-SX-30q"/>
+                            <constraint firstItem="ei4-xR-2le" firstAttribute="top" secondItem="LO8-hX-OT4" secondAttribute="top" constant="15" id="kim-hz-yli"/>
+                            <constraint firstItem="LO8-hX-OT4" firstAttribute="trailing" secondItem="pY4-j0-tcU" secondAttribute="trailing" constant="15" id="vrL-gV-hES"/>
+                            <constraint firstItem="LO8-hX-OT4" firstAttribute="trailing" secondItem="YH7-1a-aUy" secondAttribute="trailing" constant="15" id="x09-O2-Wox"/>
+                            <constraint firstItem="LO8-hX-OT4" firstAttribute="bottom" secondItem="pY4-j0-tcU" secondAttribute="bottom" constant="20" id="x1t-OJ-53k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LO8-hX-OT4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create new reward list" id="k59-OJ-rAn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iww-Ed-IAP">
+                            <connections>
+                                <action selector="saveTapped:" destination="JQ8-N6-v4n" id="zrj-HJ-XY4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addingRewardField" destination="YH7-1a-aUy" id="6Ua-Io-Kl4"/>
+                        <outlet property="listNameField" destination="ei4-xR-2le" id="DZq-Kq-8DI"/>
+                        <outlet property="listTableView" destination="pY4-j0-tcU" id="g30-Vl-L6l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1C-NE-Wq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1898" y="730"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VaV-uC-AYe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hS7-1T-WBo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YIy-ms-E2Z">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="K9e-0A-9sg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ZM-WK-LUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-15.199999999999999" y="692.20389805097454"/>
         </scene>
     </scenes>
 </document>
