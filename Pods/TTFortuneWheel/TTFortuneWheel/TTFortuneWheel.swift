@@ -16,7 +16,7 @@ public class TTFortuneWheel: UIControl, CAAnimationDelegate, SpinningAnimatorPro
     open var slices:[FortuneWheelSliceProtocol]!
     
     /// UIConfiguration of the main frame
-    open var frameStroke:StrokeInfo = StrokeInfo(color: TTUtils.uiColor(from: 0x6E17B3), width: 8)
+    open var frameStroke:StrokeInfo = StrokeInfo(color: TTUtils.uiColor(from: 0xBF8030), width: 8)//6E17B3
     open var shadow:NSShadow?
     
     

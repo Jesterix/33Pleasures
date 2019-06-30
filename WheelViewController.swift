@@ -24,10 +24,10 @@ class WheelViewController: UIViewController {
         // Do any additional setup after loading the view.
         resultLabel.text = "Spin and win your reward!"
 
-        var slices = [FortuneWheelSlice]()
+        var slices = [CustomWheelSlice]()
         if let wheelSlices = wheelSlicesAmount {
             for i in 0...wheelSlices - 1 {
-                slices.append(FortuneWheelSlice(title: rewardList[i]))
+                slices.append(CustomWheelSlice(title: rewardList[i]))
             }
         }
 
@@ -36,13 +36,27 @@ class WheelViewController: UIViewController {
         fortuneWheel = TTFortuneWheel(frame: frame, slices:slices)
         fortuneWheel!.equalSlices = true
         fortuneWheel!.slices.enumerated().forEach { (pair) in
-            let slice = pair.element as! FortuneWheelSlice
+            let slice = pair.element as! CustomWheelSlice
             let offset = pair.offset
-            switch offset % 2 {
-            case 0: slice.style = .dark
-            case 1: slice.style = .light
-            default: slice.style = .dark
+            if fortuneWheel!.slices.count % 4 != 1 {
+                switch offset % 4 {
+                case 0: slice.style = .firstColor
+                case 1: slice.style = .fourthColor
+                case 2: slice.style = .secondColor
+                case 3: slice.style = .thirdColor
+                default: slice.style = .secondColor
+                }
+            } else {
+                switch offset % 5 {
+                case 0: slice.style = .firstColor
+                case 1: slice.style = .fourthColor
+                case 2: slice.style = .secondColor
+                case 3: slice.style = .thirdColor
+                case 4: slice.style = .fourthColor
+                default: slice.style = .secondColor
+                }
             }
+            
         }
         self.view.addSubview(fortuneWheel!)
     }
