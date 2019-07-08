@@ -18,6 +18,6 @@ extension RewardList {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var rewards: [String]
+    @NSManaged public var rewards: [Reward]
 
 }

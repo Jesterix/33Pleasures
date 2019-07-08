@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E78CF4A22C90A090090AC57 /* CustomWheelSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E78CF4922C90A090090AC57 /* CustomWheelSlice.swift */; };
 		5E84A03222BE4AEE00AC16F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E84A03122BE4AEE00AC16F6 /* AppDelegate.swift */; };
 		5E84A03422BE4AEE00AC16F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E84A03322BE4AEE00AC16F6 /* ViewController.swift */; };
 		5E84A03722BE4AEE00AC16F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E84A03522BE4AEE00AC16F6 /* Main.storyboard */; };
@@ -19,11 +20,14 @@
 		5E8FB33922C60F2E001A4C98 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB33822C60F2E001A4C98 /* CoreDataManager.swift */; };
 		5E8FB33C22C6159A001A4C98 /* RewardList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB33A22C6159A001A4C98 /* RewardList+CoreDataClass.swift */; };
 		5E8FB33D22C6159A001A4C98 /* RewardList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8FB33B22C6159A001A4C98 /* RewardList+CoreDataProperties.swift */; };
+		5EE25E6C22D33DAB001F7C80 /* Reward+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE25E6A22D33DAA001F7C80 /* Reward+CoreDataClass.swift */; };
+		5EE25E6D22D33DAB001F7C80 /* Reward+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE25E6B22D33DAB001F7C80 /* Reward+CoreDataProperties.swift */; };
 		693137C29F7215917A96650F /* Pods_RewardWheel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDC0DA80A8936A7D29BD181 /* Pods_RewardWheel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0FD015EBE62B4C6566C21708 /* Pods-RewardWheel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWheel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWheel/Pods-RewardWheel.debug.xcconfig"; sourceTree = "<group>"; };
+		5E78CF4922C90A090090AC57 /* CustomWheelSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWheelSlice.swift; sourceTree = "<group>"; };
 		5E84A02E22BE4AEE00AC16F6 /* RewardWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RewardWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E84A03122BE4AEE00AC16F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E84A03322BE4AEE00AC16F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +42,8 @@
 		5E8FB33822C60F2E001A4C98 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5E8FB33A22C6159A001A4C98 /* RewardList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RewardList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5E8FB33B22C6159A001A4C98 /* RewardList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RewardList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5EE25E6A22D33DAA001F7C80 /* Reward+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reward+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5EE25E6B22D33DAB001F7C80 /* Reward+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reward+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9DDC0DA80A8936A7D29BD181 /* Pods_RewardWheel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RewardWheel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF8E3E6713621DA59910A26E /* Pods-RewardWheel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWheel.release.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWheel/Pods-RewardWheel.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +72,8 @@
 		5E84A02522BE4AEE00AC16F6 = {
 			isa = PBXGroup;
 			children = (
+				5EE25E6A22D33DAA001F7C80 /* Reward+CoreDataClass.swift */,
+				5EE25E6B22D33DAB001F7C80 /* Reward+CoreDataProperties.swift */,
 				5E8FB33A22C6159A001A4C98 /* RewardList+CoreDataClass.swift */,
 				5E8FB33B22C6159A001A4C98 /* RewardList+CoreDataProperties.swift */,
 				5E84A03022BE4AEE00AC16F6 /* RewardWheel */,
@@ -86,6 +94,7 @@
 		5E84A03022BE4AEE00AC16F6 /* RewardWheel */ = {
 			isa = PBXGroup;
 			children = (
+				5E78CF4922C90A090090AC57 /* CustomWheelSlice.swift */,
 				5E84A04C22BE72AB00AC16F6 /* WheelViewController.swift */,
 				5E84A04822BE50BF00AC16F6 /* RewardListTableViewCell.swift */,
 				5E84A03122BE4AEE00AC16F6 /* AppDelegate.swift */,
@@ -223,14 +232,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE25E6C22D33DAB001F7C80 /* Reward+CoreDataClass.swift in Sources */,
 				5E84A04922BE50BF00AC16F6 /* RewardListTableViewCell.swift in Sources */,
 				5E8FB33D22C6159A001A4C98 /* RewardList+CoreDataProperties.swift in Sources */,
 				5E8FB33C22C6159A001A4C98 /* RewardList+CoreDataClass.swift in Sources */,
 				5E8FB33722C50CA2001A4C98 /* CreateNewListVC.swift in Sources */,
 				5E84A04D22BE72AB00AC16F6 /* WheelViewController.swift in Sources */,
+				5E78CF4A22C90A090090AC57 /* CustomWheelSlice.swift in Sources */,
 				5E84A03A22BE4AEE00AC16F6 /* RewardWheelDataModel.xcdatamodeld in Sources */,
 				5E84A03422BE4AEE00AC16F6 /* ViewController.swift in Sources */,
 				5E8FB33922C60F2E001A4C98 /* CoreDataManager.swift in Sources */,
+				5EE25E6D22D33DAB001F7C80 /* Reward+CoreDataProperties.swift in Sources */,
 				5E84A03222BE4AEE00AC16F6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

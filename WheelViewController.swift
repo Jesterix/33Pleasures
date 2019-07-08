@@ -12,7 +12,7 @@ import TTFortuneWheel
 class WheelViewController: UIViewController {
 
     var wheelSlicesAmount:Int?
-    var rewardList = [""]
+    var rewardList : [Reward] = []
     @IBOutlet weak var resultLabel: UILabel!
     
     var fortuneWheel : TTFortuneWheel?
@@ -27,7 +27,7 @@ class WheelViewController: UIViewController {
         var slices = [CustomWheelSlice]()
         if let wheelSlices = wheelSlicesAmount {
             for i in 0...wheelSlices - 1 {
-                slices.append(CustomWheelSlice(title: rewardList[i]))
+                slices.append(CustomWheelSlice(title: rewardList[i].name ?? "no value"))
             }
         }
 
@@ -75,7 +75,7 @@ class WheelViewController: UIViewController {
                 self.fortuneWheel!.startAnimating(finishIndex: rand) { (finished) in
                     print(finished)
                     print(rand)
-                    self.resultLabel.text = self.rewardList[rand]
+                    self.resultLabel.text = self.rewardList[rand].name
                 }
             }
         }
