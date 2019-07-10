@@ -33,23 +33,6 @@ class CoreDataManager {
         return fetchedResultsController
     }
     
-//    func getRewardLists() -> ([String],[[String]]){
-//        var lists = [String]()
-//        var rewards = [[String]]()
-//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "RewardList")
-//        do {
-//            if let results = try persistentContainer.viewContext.fetch(request) as? [RewardList] {
-//                for result in results {
-//                    lists.append(result.name!)
-//                    rewards.append(result.rewards)
-//                }
-//            }
-//        } catch { }
-//        return (lists,rewards)
-//    }
-    
-    
-    
     
     // MARK: - Core Data stack
     

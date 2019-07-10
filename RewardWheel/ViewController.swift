@@ -27,11 +27,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let fetchRequest: NSFetchRequest<RewardList> = RewardList.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
+
         let context = CoreDataManager.instance.persistentContainer.viewContext
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
-            
+
             do {
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
@@ -92,8 +92,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             if let destination = segue.destination as? WheelViewController {
                 
+                
                 destination.wheelSlicesAmount = rewardLists[rowToSend - 1].rewards.count
-                destination.rewardList = rewardLists[rowToSend - 1].rewards
+                destination.rewardList = Array(rewardLists[rowToSend - 1].rewards)//rewardLists[rowToSend - 1].rewards ?? []
             }
         }
         if segue.identifier == "addListSegue" {

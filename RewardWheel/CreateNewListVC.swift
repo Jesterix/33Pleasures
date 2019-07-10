@@ -13,9 +13,10 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     let minimumRewardsInList = 4
     var rewardList : RewardList?
+    var rewardListArray : [Reward] = []
     var newListName = String()
-    var newRewardArray = [Reward]()
     var rewards : [Reward] = []
+    var numberOfElementToEdit = -1
     var fetchResultController = NSFetchedResultsController<Reward>()
     
     @IBOutlet weak var listTableView: UITableView!
@@ -30,11 +31,18 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if let listToEdit = rewardList {
             if listToEdit.rewards.count > 0 {
                 listNameField.text = listToEdit.name ?? ""
+                rewardListArray = Array(listToEdit.rewards)
             }
             self.title = "Edit reward list"
         } else {
             self.title = "Create new reward list"
         }
+        
+        //setting up inputAccessoryView
+        let accessoryFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
+        addingRewardField.inputAccessoryView = CustomInputView(frame: accessoryFrame)
+        
+//        надо сделать для inputAccessoryView контроллер, и привязать его в этот контроллер
         
         // Fetch data from data store
         let fetchRequest: NSFetchRequest<Reward> = Reward.fetchRequest()
@@ -58,21 +66,14 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let listToEdit = rewardList {
-            return listToEdit.rewards.count
-        } else {
-            return newRewardArray.count
-        }
+            return rewardListArray.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
-        if let listToEdit = rewardList {
-            cell.textLabel?.text = listToEdit.rewards[indexPath.row].name
-        } else {
-            cell.textLabel?.text = newRewardArray[indexPath.row].name
-        }
+        cell.textLabel?.text = rewardListArray[indexPath.row].name
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -80,32 +81,39 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            if let listToEdit = rewardList {
-                listToEdit.rewards.remove(at: indexPath.row)
-            } else {
-                newRewardArray.remove(at: indexPath.row)
-            }
+            rewardListArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        addingRewardField.becomeFirstResponder()
+        addingRewardField.text = rewardListArray[indexPath.row].name
+        numberOfElementToEdit = indexPath.row
+    }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         //here will be saving in database code
         print("save to coredata")
-        if let listToEdit = rewardList {
-            if listToEdit.rewards.count >= minimumRewardsInList  {
+        if rewardList != nil {
+            if rewardListArray.count >= minimumRewardsInList  {
+                rewardList?.rewards.removeAll()
+                for rwrd in rewardListArray {
+                    rewardList?.rewards.insert(rwrd)
+                }
                 CoreDataManager.instance.saveContext()
                 self.navigationController?.popViewController(animated: true)
             } else {
                 presentAlertOfRequirements()
             }
         } else {
-            if newRewardArray.count >= minimumRewardsInList {
+            if rewardListArray.count >= minimumRewardsInList {
                 let newRewardList = RewardList()
                 newListName = listNameField.text ?? ""
                 newRewardList.name = newListName
-                newRewardList.rewards = newRewardArray
+                for reward in rewardListArray {
+                    newRewardList.rewards.insert(reward)
+                }
                 CoreDataManager.instance.saveContext()
                 self.navigationController?.popViewController(animated: true)
             } else {
@@ -122,25 +130,26 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.present(alert, animated: true)
     }
     
-    func unwrapAndAppendResultList (rewardToAppend: Reward) {
-        if let unwrappedList = rewardList {
-            unwrappedList.rewards.append(rewardToAppend)
+    
+    func appendReward(reward: Reward) {
+        if numberOfElementToEdit >= 0 {
+            rewardListArray[numberOfElementToEdit] = reward
+            numberOfElementToEdit = -1
         } else {
-            newRewardArray.append(rewardToAppend)
+            rewardListArray.append(reward)
         }
     }
+    
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
         if let rewardText = sender.text {
             if rewardText != "" {
-                
                 var inBase = false
-                
                 for rwrd in rewards {
                     if rewardText == rwrd.name {
                         print("есть такая реварда в базе")
                         inBase = true
-                        unwrapAndAppendResultList(rewardToAppend: rwrd)
+                        appendReward(reward: rwrd)
                         break
                     }
                 }
@@ -151,15 +160,14 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     CoreDataManager.instance.saveContext()
                     rewards.append(newReward)
                     print("добавлена реварда \(newReward.name!) c категорией \(newReward.category)")
-                    unwrapAndAppendResultList(rewardToAppend: newReward)
+                    appendReward(reward: newReward)
                 }
-                
             }
         }
         listTableView.reloadData()
         sender.text = ""
     }
-
+    
 }
 
 extension CreateNewListVC: UITextFieldDelegate {
