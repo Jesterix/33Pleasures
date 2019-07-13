@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E78CF4A22C90A090090AC57 /* CustomWheelSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E78CF4922C90A090090AC57 /* CustomWheelSlice.swift */; };
+		5E80FA7E22DA2D6900CA83F8 /* CustomInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E80FA7D22DA2D6900CA83F8 /* CustomInputVC.swift */; };
 		5E84A03222BE4AEE00AC16F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E84A03122BE4AEE00AC16F6 /* AppDelegate.swift */; };
 		5E84A03422BE4AEE00AC16F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E84A03322BE4AEE00AC16F6 /* ViewController.swift */; };
 		5E84A03722BE4AEE00AC16F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E84A03522BE4AEE00AC16F6 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		0FD015EBE62B4C6566C21708 /* Pods-RewardWheel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RewardWheel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RewardWheel/Pods-RewardWheel.debug.xcconfig"; sourceTree = "<group>"; };
 		5E78CF4922C90A090090AC57 /* CustomWheelSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWheelSlice.swift; sourceTree = "<group>"; };
+		5E80FA7D22DA2D6900CA83F8 /* CustomInputVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputVC.swift; sourceTree = "<group>"; };
 		5E84A02E22BE4AEE00AC16F6 /* RewardWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RewardWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E84A03122BE4AEE00AC16F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E84A03322BE4AEE00AC16F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				5E84A03D22BE4AEF00AC16F6 /* LaunchScreen.storyboard */,
 				5E8BBC5622D4D0E900550BB9 /* CustomInputView.xib */,
 				5E8BBC5822D4D46A00550BB9 /* CustomInputView.swift */,
+				5E80FA7D22DA2D6900CA83F8 /* CustomInputVC.swift */,
 				5E84A04022BE4AEF00AC16F6 /* Info.plist */,
 				5E84A03822BE4AEE00AC16F6 /* RewardWheelDataModel.xcdatamodeld */,
 			);
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E80FA7E22DA2D6900CA83F8 /* CustomInputVC.swift in Sources */,
 				5EE25E6C22D33DAB001F7C80 /* Reward+CoreDataClass.swift in Sources */,
 				5E84A04922BE50BF00AC16F6 /* RewardListTableViewCell.swift in Sources */,
 				5E8FB33D22C6159A001A4C98 /* RewardList+CoreDataProperties.swift in Sources */,

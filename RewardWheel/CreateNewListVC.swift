@@ -18,6 +18,8 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var rewards : [Reward] = []
     var numberOfElementToEdit = -1
     var fetchResultController = NSFetchedResultsController<Reward>()
+    var customInputVC = CustomInputVC()
+    
     
     @IBOutlet weak var listTableView: UITableView!
     
@@ -39,10 +41,13 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         //setting up inputAccessoryView
-        let accessoryFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
-        addingRewardField.inputAccessoryView = CustomInputView(frame: accessoryFrame)
+        let accessoryFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
+        customInputVC.frame = accessoryFrame
+        addingRewardField.inputAccessoryView = customInputVC.view()
         
-//        надо сделать для inputAccessoryView контроллер, и привязать его в этот контроллер
+
+        
+        
         
         // Fetch data from data store
         let fetchRequest: NSFetchRequest<Reward> = Reward.fetchRequest()
@@ -142,6 +147,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
+        print("segment control is: \(customInputVC.view().categoryControl.selectedSegmentIndex)")
         if let rewardText = sender.text {
             if rewardText != "" {
                 var inBase = false
@@ -180,3 +186,4 @@ extension CreateNewListVC: UITextFieldDelegate {
         
     }
 }
+
