@@ -18,14 +18,14 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     var rewards : [Reward] = []
     var numberOfElementToEdit = -1
     var fetchResultController = NSFetchedResultsController<Reward>()
-    var customInputVC = CustomInputVC()
+//    var customInputVC = CustomInputVC()
     
     
     @IBOutlet weak var listTableView: UITableView!
     
     @IBOutlet weak var listNameField: UITextField!
     
-    @IBOutlet weak var addingRewardField: UITextField!
+    @IBOutlet weak var addingRewardField: AccessoryTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,9 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         //setting up inputAccessoryView
-        let accessoryFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
-        customInputVC.frame = accessoryFrame
-        addingRewardField.inputAccessoryView = customInputVC.view()
+//        let accessoryFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
+//        customInputVC.frame = accessoryFrame
+//        addingRewardField.inputAccessoryView = customInputVC.view()
         
 
         
@@ -147,7 +147,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
-        print("segment control is: \(customInputVC.view().categoryControl.selectedSegmentIndex)")
+        print("segment control is: \(String(describing: addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex))")
         if let rewardText = sender.text {
             if rewardText != "" {
                 var inBase = false
@@ -174,6 +174,21 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         sender.text = ""
     }
     
+    //for search and autocomplete rewards
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        var results : [String] = []
+        for reward in rewards {
+            if let name = reward.name {
+                results.append(name)
+            }
+        }
+        let searchResult = results.filter { (text) -> Bool in
+            text.contains(sender.text!)
+        }
+        print("Search result: \(searchResult)")
+        addingRewardField.accessoryVC?.tableDataSource = searchResult
+        addingRewardField.accessoryVC?.reloadData()
+    }
 }
 
 extension CreateNewListVC: UITextFieldDelegate {
@@ -183,7 +198,8 @@ extension CreateNewListVC: UITextFieldDelegate {
         } else {
             newListName = textField.text ?? ""
         }
-        
     }
+    
+
 }
 

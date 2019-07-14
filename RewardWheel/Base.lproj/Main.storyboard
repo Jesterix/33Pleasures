@@ -156,13 +156,14 @@
                                     <outlet property="delegate" destination="JQ8-N6-v4n" id="XHU-7v-LNJ"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+ New reward" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YH7-1a-aUy">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+ New reward" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YH7-1a-aUy" customClass="AccessoryTextField" customModule="RewardWheel" customModuleProvider="target">
                                 <rect key="frame" x="15" y="119" width="345" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="newRewardFieldCompleted:" destination="JQ8-N6-v4n" eventType="editingDidEnd" id="SY9-aN-IPL"/>
+                                    <action selector="textFieldEditingChanged:" destination="JQ8-N6-v4n" eventType="editingChanged" id="JSS-YD-WyI"/>
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pY4-j0-tcU">
