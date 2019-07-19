@@ -9,16 +9,16 @@
 import UIKit
 import CoreData
 
+//VC for creating and editing reward lists. Responsible for interaction with database about Rewards, adding them into lists.
 class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    let minimumRewardsInList = 4
+    let minimumRewardsInList = 4//this number restricts from creating too small lists because they don't look great in spinning wheel
     var rewardList : RewardList?
-    var rewardListArray : [Reward] = []
+    var rewardListArray : [Reward] = []//this is an array for Rewards in current RewardsList
     var newListName = String()
-    var rewards : [Reward] = []
+    var rewards : [Reward] = []//this is an array for all Rewards in database
     var numberOfElementToEdit = -1
     var fetchResultController = NSFetchedResultsController<Reward>()
-//    var customInputVC = CustomInputVC()
     
     
     @IBOutlet weak var listTableView: UITableView!
@@ -29,7 +29,8 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // Setting up VC
         if let listToEdit = rewardList {
             if listToEdit.rewards.count > 0 {
                 listNameField.text = listToEdit.name ?? ""
@@ -40,16 +41,8 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.title = "Create new reward list"
         }
         
-        //setting up inputAccessoryView
-//        let accessoryFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
-//        customInputVC.frame = accessoryFrame
-//        addingRewardField.inputAccessoryView = customInputVC.view()
         
-
-        
-        
-        
-        // Fetch data from data store
+        // Fetch data from data storage
         let fetchRequest: NSFetchRequest<Reward> = Reward.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -66,7 +59,6 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         } catch {
             print(error)
         }
-        
     }
     
     
@@ -98,7 +90,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
-        //here will be saving in database code
+        //creates new or saves existing reward list and pops view controller to previous screen
         print("save to coredata")
         if rewardList != nil {
             if rewardListArray.count >= minimumRewardsInList  {
@@ -130,13 +122,14 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func presentAlertOfRequirements() {
-        let alert = UIAlertController(title: "Add 4 rewards minimum", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add \(minimumRewardsInList) rewards minimum", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
     
     
     func appendReward(reward: Reward) {
+        //this func appends new reward in list or edit existing one
         if numberOfElementToEdit >= 0 {
             rewardListArray[numberOfElementToEdit] = reward
             numberOfElementToEdit = -1
@@ -147,6 +140,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
+        //Checks whether entered reward is in database or not. Adds it to current RewardList.
         print("segment control is: \(String(describing: addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex))")
         if let rewardText = sender.text {
             if rewardText != "" {

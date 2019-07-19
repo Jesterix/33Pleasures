@@ -9,6 +9,7 @@
 import UIKit
 import TTFortuneWheel
 
+//VC responsible for user interaction with fortune wheel
 class WheelViewController: UIViewController {
 
     var wheelSlicesAmount:Int?

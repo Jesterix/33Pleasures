@@ -8,6 +8,7 @@
 
 import UIKit
 
+//custom text field which has VC to handle custom accessoryView as a property
 class AccessoryTextField: UITextField {
 
     var accessoryVC : CustomInputVC?
@@ -20,7 +21,6 @@ class AccessoryTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
-//        fatalError("init(coder:) has not been implemented")
     }
     
     func setup(){

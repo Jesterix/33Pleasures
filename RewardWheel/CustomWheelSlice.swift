@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import TTFortuneWheel
 
-//Just a basic implementation of spinning wheel slice
+//Custom implementation of spinning wheel slice
 public class CustomWheelSlice: FortuneWheelSliceProtocol {
     
     public enum Style {

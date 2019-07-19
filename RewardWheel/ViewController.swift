@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-
+//Initial VC which is responsible for getting RewardLists from data storage, displaying them in table view. Also contains transaction logic from this screen.
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var rowToSend = 0
