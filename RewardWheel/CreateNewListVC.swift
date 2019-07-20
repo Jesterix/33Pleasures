@@ -141,7 +141,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
         //Checks whether entered reward is in database or not. Adds it to current RewardList.
-        print("segment control is: \(String(describing: addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex))")
+//        print("segment control is: \(String(describing: addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex))")
         if let rewardText = sender.text {
             if rewardText != "" {
                 var inBase = false

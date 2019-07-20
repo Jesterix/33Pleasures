@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol DoneButtonToHide {
+    func doneTapped()
+}
+
 class CustomInputView: UIView {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var categoryControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    var delegate : DoneButtonToHide?
     
     
     override init(frame: CGRect) {
@@ -32,5 +37,8 @@ class CustomInputView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        delegate?.doneTapped()
+    }
     
 }

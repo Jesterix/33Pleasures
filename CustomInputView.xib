@@ -31,21 +31,45 @@
                         <segment title="Expensive"/>
                     </segments>
                 </segmentedControl>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="20" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="31P-DR-5mp">
-                    <rect key="frame" x="15" y="82" width="384" height="80"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="25" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="31P-DR-5mp">
+                    <rect key="frame" x="15" y="82" width="384" height="735"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="8FE-UJ-uU1"/>
-                    </constraints>
                 </tableView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojp-Dt-U5z">
+                    <rect key="frame" x="0.0" y="817" width="414" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="RaF-5T-55X"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XCu-tl-BoS"/>
+                        <barButtonItem style="done" systemItem="done" id="HGm-Fe-EWR">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="doneTapped:" destination="-1" id="xRN-2a-MO9"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name your reward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyT-b0-uHF">
+                    <rect key="frame" x="151.5" y="831.5" width="111" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ojp-Dt-U5z" firstAttribute="top" secondItem="31P-DR-5mp" secondAttribute="bottom" id="2Ac-WJ-jH9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ojp-Dt-U5z" secondAttribute="bottom" id="5ez-1s-FYG"/>
                 <constraint firstItem="EOB-LW-gfd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="5yp-GT-SlD"/>
                 <constraint firstItem="31P-DR-5mp" firstAttribute="width" secondItem="EOB-LW-gfd" secondAttribute="width" id="JrJ-bW-7iK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EOB-LW-gfd" secondAttribute="trailing" constant="15" id="LUS-Jy-cSa"/>
                 <constraint firstItem="31P-DR-5mp" firstAttribute="top" secondItem="EOB-LW-gfd" secondAttribute="bottom" constant="10" id="NP9-KO-Et2"/>
+                <constraint firstItem="ojp-Dt-U5z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SPK-TK-lcU"/>
                 <constraint firstItem="31P-DR-5mp" firstAttribute="centerX" secondItem="EOB-LW-gfd" secondAttribute="centerX" id="SyZ-QA-lby"/>
+                <constraint firstItem="QyT-b0-uHF" firstAttribute="centerX" secondItem="ojp-Dt-U5z" secondAttribute="centerX" id="Tbh-q2-V2a"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ojp-Dt-U5z" secondAttribute="trailing" id="bMY-na-vyG"/>
+                <constraint firstItem="QyT-b0-uHF" firstAttribute="centerY" secondItem="ojp-Dt-U5z" secondAttribute="centerY" id="cZ0-39-Goq"/>
                 <constraint firstItem="EOB-LW-gfd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="mbf-9V-oP2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

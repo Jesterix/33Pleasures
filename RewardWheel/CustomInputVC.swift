@@ -31,8 +31,6 @@ class CustomInputVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func view() -> CustomInputView {
         return self.view as! CustomInputView
     }
-//здесь добавить реализацию делегата таблицы
-//    а во вью добавить тулбар с кнопкой ДОНЕ (через билдер)
     
     func reloadData(){
         table?.reloadData()
