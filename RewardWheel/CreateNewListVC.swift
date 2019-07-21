@@ -141,7 +141,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
         //Checks whether entered reward is in database or not. Adds it to current RewardList.
-//        print("segment control is: \(String(describing: addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex))")
+        print("segment control is: \(String(describing: addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex))")
         if let rewardText = sender.text {
             if rewardText != "" {
                 var inBase = false
@@ -154,13 +154,16 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     }
                 }
                 if !inBase {
-                    let newReward = Reward()
-                    newReward.name = rewardText
-                    newReward.category = 0
-                    CoreDataManager.instance.saveContext()
-                    rewards.append(newReward)
-                    print("добавлена реварда \(newReward.name!) c категорией \(newReward.category)")
-                    appendReward(reward: newReward)
+                    if let accessoryVC = addingRewardField.accessoryVC {
+                        let category = Int16(accessoryVC.view().categoryControl.selectedSegmentIndex)
+                        let newReward = Reward()
+                        newReward.name = rewardText
+                        newReward.category = category
+                        CoreDataManager.instance.saveContext()
+                        rewards.append(newReward)
+                        print("добавлена реварда \(newReward.name!) c категорией \(newReward.category)")
+                        appendReward(reward: newReward)
+                    }
                 }
             }
         }
@@ -170,16 +173,13 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     //for search and autocomplete rewards
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        var results : [String] = []
-        for reward in rewards {
-            if let name = reward.name {
-                results.append(name)
+        let searchResult = rewards.filter { (result) -> Bool in
+            if let name = result.name {
+                return name.contains(sender.text!)
+            } else {
+                return false
             }
         }
-        let searchResult = results.filter { (text) -> Bool in
-            text.contains(sender.text!)
-        }
-        print("Search result: \(searchResult)")
         addingRewardField.accessoryVC?.tableDataSource = searchResult
         addingRewardField.accessoryVC?.reloadData()
     }

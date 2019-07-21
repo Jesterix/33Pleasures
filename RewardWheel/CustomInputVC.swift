@@ -11,7 +11,7 @@ import UIKit
 class CustomInputVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var frame : CGRect?
-    var tableDataSource : [String] = []
+    var tableDataSource : [Reward] = []
     var table: UITableView?
     
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class CustomInputVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
-        cell.textLabel?.text = tableDataSource[indexPath.row]
+        cell.textLabel?.text = tableDataSource[indexPath.row].name
         return cell
     }
 
