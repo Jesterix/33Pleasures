@@ -9,7 +9,7 @@
 import UIKit
 
 //custom text field which has VC to handle custom accessoryView as a property
-class AccessoryTextField: UITextField, DoneButtonToHide {
+class AccessoryTextField: UITextField {
 
     var accessoryVC : CustomInputVC?
     
@@ -29,9 +29,16 @@ class AccessoryTextField: UITextField, DoneButtonToHide {
         accessoryVC?.frame = accessoryFrame
         self.inputAccessoryView = accessoryVC?.view()
         accessoryVC?.view().delegate = self
+        accessoryVC?.textViewDelegate = self
     }
     
+}
+
+extension AccessoryTextField : DoneButtonToHide {
     func doneTapped() {
         self.resignFirstResponder()
+        accessoryVC?.tableDataSource = []
+        accessoryVC?.view().categoryControl.selectedSegmentIndex = 0
+        accessoryVC?.reloadData()
     }
 }

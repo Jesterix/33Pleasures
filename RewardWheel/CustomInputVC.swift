@@ -12,7 +12,8 @@ class CustomInputVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     var frame : CGRect?
     var tableDataSource : [Reward] = []
-    var table: UITableView?
+    var table : UITableView?
+    var textViewDelegate : AccessoryTextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,12 @@ class CustomInputVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
         cell.textLabel?.text = tableDataSource[indexPath.row].name
+        cell.selectionStyle = .none
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        textViewDelegate?.text = tableDataSource[indexPath.row].name
+        self.view().categoryControl.selectedSegmentIndex = Int(tableDataSource[indexPath.row].category)
+    }
 }

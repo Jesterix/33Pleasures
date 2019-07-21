@@ -61,6 +61,21 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    //this func is for translating Int16 to certain background colors
+    func setColorFromInt16(value: Int16) -> UIColor {
+        switch value {
+        case 0:
+            return UIColor.cyan
+        case 1:
+            return UIColor.blue
+        case 2:
+            return UIColor.orange
+        case 3:
+            return UIColor.green
+        default:
+            return UIColor.red
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return rewardListArray.count
@@ -70,6 +85,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init()
         cell.textLabel?.text = rewardListArray[indexPath.row].name
+        cell.textLabel?.textColor = setColorFromInt16(value: rewardListArray[indexPath.row].category)
         cell.selectionStyle = .none
         return cell
     }
@@ -87,6 +103,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         addingRewardField.becomeFirstResponder()
         addingRewardField.text = rewardListArray[indexPath.row].name
         numberOfElementToEdit = indexPath.row
+        addingRewardField.accessoryVC?.view().categoryControl.selectedSegmentIndex = Int(rewardListArray[indexPath.row].category)
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
@@ -149,7 +166,16 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     if rewardText == rwrd.name {
                         print("есть такая реварда в базе")
                         inBase = true
-                        appendReward(reward: rwrd)
+                        var inList = false
+                        for rewrd in rewardListArray {
+                            if rewardText == rewrd.name {
+                                inList = true
+                                print("есть такая реварда в листе")
+                            }
+                        }
+                        if !inList {
+                            appendReward(reward: rwrd)
+                        }
                         break
                     }
                 }
