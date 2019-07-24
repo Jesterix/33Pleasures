@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol TransitionDelegate {
+    func transite()
+}
+
 //custom text field which has VC to handle custom accessoryView as a property
 class AccessoryTextField: UITextField {
 
     var accessoryVC : CustomInputVC?
+    var filterButton : UIButton?
+    var transitionDelegate : TransitionDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,8 +36,21 @@ class AccessoryTextField: UITextField {
         self.inputAccessoryView = accessoryVC?.view()
         accessoryVC?.view().delegate = self
         accessoryVC?.textViewDelegate = self
+        filterButtonSetup()
     }
     
+    func filterButtonSetup(){
+        let button = UIButton(type: .system)
+        button.setTitle("📖", for: .normal)
+        button.frame = CGRect(x: self.bounds.maxX * 0.9, y: 0, width: self.bounds.height, height: self.bounds.height)
+        button.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
+        self.addSubview(button)
+        filterButton = button
+    }
+    
+    @objc func filterButtonTapped(){
+        self.transitionDelegate?.transite()
+    }
 }
 
 extension AccessoryTextField : DoneButtonToHide {

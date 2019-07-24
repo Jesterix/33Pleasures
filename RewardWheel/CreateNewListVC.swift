@@ -41,6 +41,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.title = "Create new reward list"
         }
         
+        addingRewardField.transitionDelegate = self
         
         // Fetch data from data storage
         let fetchRequest: NSFetchRequest<Reward> = Reward.fetchRequest()
@@ -61,7 +62,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    //this func is for translating Int16 to certain background colors
+    //this func is for translating Int16 to certain background colors for setting colors of different categories of rewards
     func setColorFromInt16(value: Int16) -> UIColor {
         switch value {
         case 0:
@@ -219,7 +220,10 @@ extension CreateNewListVC: UITextFieldDelegate {
             newListName = textField.text ?? ""
         }
     }
-    
-
 }
 
+extension CreateNewListVC: TransitionDelegate {
+    func transite(){
+        performSegue(withIdentifier: "showFiltersSegue", sender: self)
+    }
+}

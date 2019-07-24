@@ -201,11 +201,27 @@
                         <outlet property="addingRewardField" destination="YH7-1a-aUy" id="6Ua-Io-Kl4"/>
                         <outlet property="listNameField" destination="ei4-xR-2le" id="DZq-Kq-8DI"/>
                         <outlet property="listTableView" destination="pY4-j0-tcU" id="g30-Vl-L6l"/>
+                        <segue destination="4Wl-q8-MCo" kind="show" identifier="showFiltersSegue" id="X5l-X6-5r0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1C-NE-Wq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1898" y="730"/>
+            <point key="canvasLocation" x="993" y="817"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5nM-mj-Eb6">
+            <objects>
+                <viewController id="4Wl-q8-MCo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8do-OH-sh8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nod-G8-vFt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ysU-ix-uku" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855" y="816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VaV-uC-AYe">
