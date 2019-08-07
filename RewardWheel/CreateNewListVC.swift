@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 //VC for creating and editing reward lists. Responsible for interaction with database about Rewards, adding them into lists.
-class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, DataDelegate {
     
     let minimumRewardsInList = 4//this number restricts from creating too small lists because they don't look great in spinning wheel
     var rewardList : RewardList?
@@ -156,6 +156,10 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    func getData(data:[Reward]) {
+        rewardListArray += data
+        self.listTableView.reloadData()
+    }
     
     @IBAction func newRewardFieldCompleted(_ sender: UITextField) {
         //Checks whether entered reward is in database or not. Adds it to current RewardList.
@@ -209,6 +213,14 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         addingRewardField.accessoryVC?.tableDataSource = searchResult
         addingRewardField.accessoryVC?.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFiltersSegue" {
+            if let destination = segue.destination as? FilterVC {
+                destination.dataDelegate = self
+            }
+        }
     }
 }
 

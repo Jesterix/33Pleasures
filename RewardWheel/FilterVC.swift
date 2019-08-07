@@ -11,12 +11,17 @@ import CoreData
 //TODO
 //refactor fetchresultcontroller by extension for setup
 
+protocol DataDelegate {
+    func getData(data:[Reward])
+}
+
 class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     var rewards : [Reward] = []//this is an array for all Rewards in database
     var fetchResultController = NSFetchedResultsController<Reward>()
     var rewardsToShow : [Reward] = []//this is an array for filtering
     var allCellsAreSelected = false
+    var dataDelegate : DataDelegate?
 
     @IBOutlet weak var filterTableView: UITableView!
     
@@ -154,6 +159,18 @@ class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
     
     
     @IBAction func addAllSelectedToListTapped(_ sender: UIButton) {
+        var rewardsToAdd : [Reward] = []
+        for section in 0...filterTableView.numberOfSections - 1 {
+            for row in 0...filterTableView.numberOfRows(inSection: section) - 1 {
+                if let cell = filterTableView.cellForRow(at: IndexPath(row: row, section: section)) {
+                    if cell.isSelected {
+                        rewardsToAdd.append(rewardsToShow[row])
+                    }
+                }
+            }
+            self.dataDelegate?.getData(data: rewardsToAdd)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func filterData(){
