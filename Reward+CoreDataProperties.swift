@@ -2,7 +2,7 @@
 //  Reward+CoreDataProperties.swift
 //  RewardWheel
 //
-//  Created by Georgy Khaydenko on 10/07/2019.
+//  Created by Georgy Khaydenko on 10/08/2019.
 //  Copyright © 2019 Georgy Khaydenko. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Reward {
 
     @NSManaged public var category: Int16
     @NSManaged public var name: String?
+    @NSManaged public var wasSelected: Int64
     @NSManaged public var rewardList: NSSet?
 
 }

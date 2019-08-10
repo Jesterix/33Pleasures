@@ -10,6 +10,47 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Statistics-->
+        <scene sceneID="Hy5-yu-zEb">
+            <objects>
+                <viewController id="tWJ-l5-gsK" customClass="StatsVC" customModule="RewardWheel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y1N-yD-L8w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G1x-Yw-BeJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tWJ-l5-gsK" id="wNf-CZ-BM2"/>
+                                    <outlet property="delegate" destination="tWJ-l5-gsK" id="ecH-W5-WoL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="G1x-Yw-BeJ" firstAttribute="top" secondItem="t4E-Ae-96R" secondAttribute="top" id="7vI-Nj-TaN"/>
+                            <constraint firstItem="t4E-Ae-96R" firstAttribute="bottom" secondItem="G1x-Yw-BeJ" secondAttribute="bottom" id="WBm-vr-amn"/>
+                            <constraint firstItem="t4E-Ae-96R" firstAttribute="trailing" secondItem="G1x-Yw-BeJ" secondAttribute="trailing" id="WLf-tR-lP2"/>
+                            <constraint firstItem="G1x-Yw-BeJ" firstAttribute="leading" secondItem="t4E-Ae-96R" secondAttribute="leading" id="vor-XB-pK2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t4E-Ae-96R"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Statistics" id="e5M-Qu-otd">
+                        <barButtonItem key="rightBarButtonItem" title="Discard" id="rVF-yr-mCg">
+                            <connections>
+                                <action selector="discardTapped:" destination="tWJ-l5-gsK" id="YzW-9s-HC5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="G1x-Yw-BeJ" id="PaX-M3-8eI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edl-oV-Gpx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="-737"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -73,6 +114,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kci-LY-5PR">
+                        <barButtonItem key="leftBarButtonItem" title="Statistics" id="7SA-DQ-tpy">
+                            <connections>
+                                <segue destination="tWJ-l5-gsK" kind="show" id="Atg-gx-XFz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kg5-ty-W3V">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

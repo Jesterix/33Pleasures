@@ -29,18 +29,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchRequest.sortDescriptors = [sortDescriptor]
 
         let context = CoreDataManager.instance.persistentContainer.viewContext
-            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-            fetchResultController.delegate = self
-
-            do {
-                try fetchResultController.performFetch()
-                if let fetchedObjects = fetchResultController.fetchedObjects {
-                    rewardLists = fetchedObjects
-                }
-            } catch {
-                print(error)
+        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultController.delegate = self
+        
+        do {
+            try fetchResultController.performFetch()
+            if let fetchedObjects = fetchResultController.fetchedObjects {
+                rewardLists = fetchedObjects
             }
+        } catch {
+            print(error)
         }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rewardLists.count

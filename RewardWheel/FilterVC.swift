@@ -8,13 +8,12 @@
 
 import UIKit
 import CoreData
-//TODO
-//refactor fetchresultcontroller by extension for setup
 
 protocol DataDelegate {
     func getData(data:[Reward])
 }
 
+//vc for working with all rewards in CoreData, filtering them and adding to reward lists with ease
 class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     var rewards : [Reward] = []//this is an array for all Rewards in database
@@ -39,11 +38,11 @@ class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
         let fetchRequest: NSFetchRequest<Reward> = Reward.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
+
         let context = CoreDataManager.instance.persistentContainer.viewContext
         fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
-        
+
         do {
             try fetchResultController.performFetch()
             if let fetchedObjects = fetchResultController.fetchedObjects {

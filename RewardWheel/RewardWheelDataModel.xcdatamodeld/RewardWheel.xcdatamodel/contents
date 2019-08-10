@@ -3,6 +3,7 @@
     <entity name="Reward" representedClassName="Reward" syncable="YES">
         <attribute name="category" attributeType="Integer 16" minValueString="0" maxValueString="3" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="wasSelected" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="rewardList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RewardList" inverseName="rewards" inverseEntity="RewardList" syncable="YES"/>
     </entity>
     <entity name="RewardList" representedClassName="RewardList" syncable="YES">
@@ -10,7 +11,7 @@
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="rewardList" inverseEntity="Reward" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Reward" positionX="-54" positionY="9" width="128" height="88"/>
+        <element name="Reward" positionX="-54" positionY="9" width="128" height="105"/>
         <element name="RewardList" positionX="-63" positionY="-18" width="128" height="73"/>
     </elements>
 </model>

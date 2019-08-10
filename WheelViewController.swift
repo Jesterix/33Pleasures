@@ -32,7 +32,9 @@ class WheelViewController: UIViewController {
             }
         }
 
-        let frame = CGRect(origin: (CGPoint(x: 25, y: view.frame.height/4)), size: CGSize(width: view.frame.width - 50, height: view.frame.width - 50))
+        let wheelRadius : CGFloat = (view.frame.width - 50) / 2
+        let wheelPosition : CGPoint = CGPoint(x: view.center.x - wheelRadius, y: view.center.y - wheelRadius)
+        let frame = CGRect(origin: wheelPosition, size: CGSize(width: wheelRadius * 2, height: wheelRadius * 2))
         
         fortuneWheel = TTFortuneWheel(frame: frame, slices:slices)
         fortuneWheel!.equalSlices = true
@@ -74,9 +76,9 @@ class WheelViewController: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.fortuneWheel!.startAnimating(finishIndex: rand) { (finished) in
-                    print(finished)
-                    print(rand)
                     self.resultLabel.text = self.rewardList[rand].name
+                    self.rewardList[rand].wasSelected += 1
+                    CoreDataManager.instance.saveContext()
                 }
             }
         }
