@@ -49,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rewardListCell", for: indexPath) as! RewardListTableViewCell
         cell.rewardListNameLabel.text = rewardLists[indexPath.row].name
+        cell.selectionStyle = .none
         return cell
     }
     

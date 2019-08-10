@@ -75,6 +75,7 @@ class StatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         default:
             cell.backgroundColor = UIColor.white
         }
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -94,7 +95,7 @@ class StatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
 
     @IBAction func discardTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Discard all stats", message: "This will discard all statistics. Are you shure?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { (action) in
             self.discardStatistics()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
