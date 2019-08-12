@@ -82,23 +82,23 @@ class StatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "The most popular reward is:"
+            return NSLocalizedString("The most popular reward is:", comment: "first reward")
         case 1:
-            return "The second popular reward is:"
+            return NSLocalizedString("The second popular reward is:", comment: "second reward")
         case 2:
-            return "The third popular reward is:"
+            return NSLocalizedString("The third popular reward is:", comment: "third reward")
         default:
-            return "Other rewards"
+            return NSLocalizedString("Other rewards:", comment: "other rewards")
         }
     }
     
 
     @IBAction func discardTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Discard all stats", message: "This will discard all statistics. Are you shure?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { (action) in
+        let alert = UIAlertController(title: NSLocalizedString("Discard all stats", comment: "discarding header"), message: NSLocalizedString("This will discard all statistics. Are you shure?", comment: "discarding message"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Discard", comment: "discarding button"), style: .destructive, handler: { (action) in
             self.discardStatistics()
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "cancelling button"), style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     

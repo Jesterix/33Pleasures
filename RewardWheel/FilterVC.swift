@@ -89,7 +89,7 @@ class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
     
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: "delete") { (rowAction, indexPath) in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: NSLocalizedString("delete", comment: "delete row action")) { (rowAction, indexPath) in
             //delete row from table and from CoreData
             print("delete row")
             let context = CoreDataManager.instance.persistentContainer.viewContext
@@ -135,9 +135,9 @@ class FilterVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NS
     
     func checkSelectButtonState(){
         if allCellsAreSelected {
-            selectButton.setTitle("Deselect all", for: .normal)
+            selectButton.setTitle(NSLocalizedString("Deselect all", comment: "deselect button"), for: .normal)
         } else {
-            selectButton.setTitle("Select all", for: .normal)
+            selectButton.setTitle(NSLocalizedString("Select all", comment: "select button"), for: .normal)
         }
     }
     

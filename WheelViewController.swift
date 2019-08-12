@@ -23,12 +23,12 @@ class WheelViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        resultLabel.text = "Spin and win your reward!"
+        resultLabel.text = NSLocalizedString("Spin and win your reward!", comment: "for spinning the wheel")
 
         var slices = [CustomWheelSlice]()
         if let wheelSlices = wheelSlicesAmount {
             for i in 0...wheelSlices - 1 {
-                slices.append(CustomWheelSlice(title: rewardList[i].name ?? "no value"))
+                slices.append(CustomWheelSlice(title: rewardList[i].name ?? NSLocalizedString("no value", comment: "there is no name for wheel slice")))
             }
         }
 

@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: "delete") { (rowAction, indexPath) in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.default, title: NSLocalizedString("delete", comment: "delete row action")) { (rowAction, indexPath) in
             self.rowToSend = indexPath.row - 1
             //delete row
             print("delete row")
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         deleteAction.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
         
         
-        let editAction = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: "edit") { (rowAction, indexPath) in
+        let editAction = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: NSLocalizedString("edit", comment: "edit row action")) { (rowAction, indexPath) in
             self.rowToSend = indexPath.row + 1
             self.performSegue(withIdentifier: "addListSegue", sender: self)
         }

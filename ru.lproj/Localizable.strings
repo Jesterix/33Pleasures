@@ -1,0 +1,51 @@
+/* minimum requirements to list */
+"Add (minimumRewardsInList) rewards minimum" = "Добавь минимум (minimumRewardsInList) удовольствий";
+
+/* cancelling button */
+"Cancel" = "Отменить";
+
+/* name of create view controller */
+"Create new reward list" = "Создать новый список";
+
+/* delete row action */
+"delete" = "удалить";
+
+/* deselect button */
+"Deselect all" = "Снять выделение";
+
+/* discarding button */
+"Discard" = "Сбросить";
+
+/* discarding header */
+"Discard all stats" = "Сбросить статистику";
+
+/* edit row action */
+"edit" = "изменить";
+
+/* name of edit view controller */
+"Edit reward list" = "Редактирование списка";
+
+/* there is no name for wheel slice */
+"no value" = "нет значения";
+
+/* other rewards */
+"Other rewards" = "Остальные удовольствия:";
+
+/* select button */
+"Select all" = "Выбрать всё";
+
+/* for spinning the wheel */
+"Spin and win your reward!" = "Вращай колесо и выбери удовольствие!";
+
+/* first reward */
+"The most popular reward is:" = "Самое популярное:";
+
+/* second reward */
+"The second popular reward is:" = "Второе место:";
+
+/* third reward */
+"The third popular reward is:" = "Третье место:";
+
+/* discarding message */
+"This will discard all statistics. Are you shure?" = "Это сбросит всю статистику. Вы уверены?";
+

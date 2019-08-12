@@ -36,9 +36,9 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 listNameField.text = listToEdit.name ?? ""
                 rewardListArray = Array(listToEdit.rewards)
             }
-            self.title = "Edit reward list"
+            self.title = NSLocalizedString("Edit reward list", comment: "name of edit view controller")
         } else {
-            self.title = "Create new reward list"
+            self.title = NSLocalizedString("Create new reward list", comment: "name of create view controller")
         }
         
         addingRewardField.transitionDelegate = self
@@ -140,7 +140,7 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func presentAlertOfRequirements() {
-        let alert = UIAlertController(title: "Add \(minimumRewardsInList) rewards minimum", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Add \(minimumRewardsInList) rewards minimum", comment: "minimum requirements to list"), message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
