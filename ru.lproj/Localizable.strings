@@ -1,5 +1,5 @@
 /* minimum requirements to list */
-"Add (minimumRewardsInList) rewards minimum" = "Добавь минимум (minimumRewardsInList) удовольствий";
+"Add %d rewards minimum" = "Добавьте минимум %d удовольствия";
 
 /* cancelling button */
 "Cancel" = "Отменить";
@@ -27,9 +27,6 @@
 
 /* there is no name for wheel slice */
 "no value" = "нет значения";
-
-/* other rewards */
-"Other rewards" = "Остальные удовольствия:";
 
 /* select button */
 "Select all" = "Выбрать всё";

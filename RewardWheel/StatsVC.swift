@@ -50,21 +50,23 @@ class StatsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSF
         case 0, 1, 2:
             return 1
         default:
-            return rewards.count
+            return rewards.count - 3
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StatsCell", for: indexPath) as! StatsCell
+        guard rewards.count > 0 else { return cell }
         let cellCountChecker = rewards.count - indexPath.row - indexPath.section
         if cellCountChecker > 0 {
             cell.nameLabel.text = rewards[indexPath.row + indexPath.section].name
             cell.wasSelectedLabel.text = String(rewards[indexPath.row + indexPath.section].wasSelected)
         } else {
-            cell.nameLabel.text = rewards[rewards.count - indexPath.section - cellCountChecker].name
-            cell.wasSelectedLabel.text = String(rewards[rewards.count - indexPath.section - cellCountChecker].wasSelected)
+            let index = rewards.count - indexPath.section - cellCountChecker
+                cell.nameLabel.text = rewards[index].name
+                cell.wasSelectedLabel.text = String(rewards[index].wasSelected)
         }
-
+        
         switch indexPath.section {
         case 0:
             cell.backgroundColor = UIColor.yellow

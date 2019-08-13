@@ -140,7 +140,8 @@ class CreateNewListVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func presentAlertOfRequirements() {
-        let alert = UIAlertController(title: NSLocalizedString("Add \(minimumRewardsInList) rewards minimum", comment: "minimum requirements to list"), message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: String(format: NSLocalizedString("Add %d rewards minimum", comment: "minimum requirements to list"), minimumRewardsInList), message: "", preferredStyle: .alert)
+ 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
